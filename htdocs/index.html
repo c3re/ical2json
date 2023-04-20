@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>ICAL2JSON helper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>URL-Builder</h1>
+    <form id="form">
+      <label><input type="url" name="url" id="url" />ICAL-URL</label>
+      <label
+        ><input type="text" name="start" id="start" placeholder="today" />Start
+        Date in a strtotime() compatible format (<span
+          class="previewStart"
+        ></span
+        >)</label
+      >
+      <label
+        ><input
+          type="text"
+          name="end"
+          id="end"
+          placeholder="last day of next month"
+        />End Date in a strtotime() compatible format (<span
+          class="previewEnd"
+        ></span
+        >)</label
+      >
+      <label
+        ><input
+          type="number"
+          name="maxitems"
+          id="maxitems"
+          min="1"
+          max="100"
+          step="1"
+          placeholder="100"
+        />maximal number of items shown</label
+      >
+      <label><input type="submit" value="Preview" /></label>
+    </form>
+    <h1>Preview data</h1>
+    <label
+      ><input type="text" aria-disabled="true" id="previewUrl" value="" /> Your
+      json url</label
+    >
+    <div id="preview">No data</div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
