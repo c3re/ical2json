@@ -1,82 +1,83 @@
 {
-  "_readme": [
-    "This file locks the dependencies of your project to a known state",
-    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-    "This file is @generated automatically"
-  ],
-  "content-hash": "10482d28879f2a0ab5cd26452cfd53d5",
-  "packages": [
-    {
-      "name": "johngrogg/ics-parser",
-      "version": "v2.2.2",
-      "source": {
-        "type": "git",
-        "url": "https://github.com/u01jmg3/ics-parser.git",
-        "reference": "69c80471a0a99142ebc72b21c2bc084e81a7c4f4"
-      },
-      "dist": {
-        "type": "zip",
-        "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/69c80471a0a99142ebc72b21c2bc084e81a7c4f4",
-        "reference": "69c80471a0a99142ebc72b21c2bc084e81a7c4f4",
-        "shasum": ""
-      },
-      "require": {
-        "ext-mbstring": "*",
-        "php": ">=5.3.9"
-      },
-      "require-dev": {
-        "phpunit/phpunit": "^4",
-        "squizlabs/php_codesniffer": "~2.9.1"
-      },
-      "type": "library",
-      "autoload": {
-        "psr-0": {
-          "ICal": "src/"
-        }
-      },
-      "notification-url": "https://packagist.org/downloads/",
-      "license": ["MIT"],
-      "authors": [
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "c642d581c001f77b8865d861e3657961",
+    "packages": [
         {
-          "name": "Jonathan Goode",
-          "role": "Developer/Owner"
-        },
-        {
-          "name": "John Grogg",
-          "email": "john.grogg@gmail.com",
-          "role": "Developer/Prior Owner"
+            "name": "johngrogg/ics-parser",
+            "version": "v3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/u01jmg3/ics-parser.git",
+                "reference": "eeb51c4c0c06e6df3266f85ea774ca314536aba4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/u01jmg3/ics-parser/zipball/eeb51c4c0c06e6df3266f85ea774ca314536aba4",
+                "reference": "eeb51c4c0c06e6df3266f85ea774ca314536aba4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.6.40"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5|^9|^10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ICal": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Goode",
+                    "role": "Developer/Owner"
+                },
+                {
+                    "name": "John Grogg",
+                    "email": "john.grogg@gmail.com",
+                    "role": "Developer/Prior Owner"
+                }
+            ],
+            "description": "ICS Parser",
+            "homepage": "https://github.com/u01jmg3/ics-parser",
+            "keywords": [
+                "iCalendar",
+                "ical",
+                "ical-parser",
+                "ics",
+                "ics-parser",
+                "ifb"
+            ],
+            "support": {
+                "issues": "https://github.com/u01jmg3/ics-parser/issues",
+                "source": "https://github.com/u01jmg3/ics-parser/tree/v3.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/u01jmg3",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-10-10T09:58:49+00:00"
         }
-      ],
-      "description": "ICS Parser",
-      "homepage": "https://github.com/u01jmg3/ics-parser",
-      "keywords": [
-        "iCalendar",
-        "ical",
-        "ical-parser",
-        "ics",
-        "ics-parser",
-        "ifb"
-      ],
-      "support": {
-        "issues": "https://github.com/u01jmg3/ics-parser/issues",
-        "source": "https://github.com/u01jmg3/ics-parser/tree/v2.2.2"
-      },
-      "funding": [
-        {
-          "url": "https://github.com/sponsors/u01jmg3",
-          "type": "github"
-        }
-      ],
-      "time": "2020-11-02T10:28:33+00:00"
-    }
-  ],
-  "packages-dev": [],
-  "aliases": [],
-  "minimum-stability": "stable",
-  "stability-flags": [],
-  "prefer-stable": false,
-  "prefer-lowest": false,
-  "platform": [],
-  "platform-dev": [],
-  "plugin-api-version": "2.3.0"
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
