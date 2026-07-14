@@ -51,7 +51,7 @@ start.onchange = function () {
   xhr.open(
     "get",
     "/strtotime/?" +
-      new URLSearchParams({ date: val, format: "Y-m-d" }).toString()
+      new URLSearchParams({ date: val, format: "Y-m-d" }).toString(),
   );
   xhr.onload = function () {
     if (xhr.status == 200) {
@@ -73,7 +73,7 @@ end.onchange = function () {
   xhr.open(
     "get",
     "/strtotime/?" +
-      new URLSearchParams({ date: val, format: "Y-m-d" }).toString()
+      new URLSearchParams({ date: val, format: "Y-m-d" }).toString(),
   );
   xhr.onload = function () {
     if (xhr.status == 200) {
