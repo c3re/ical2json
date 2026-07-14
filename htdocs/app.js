@@ -22,7 +22,7 @@ document.getElementById("form").onsubmit = function () {
   outputEl.innerHTML = "Loading...";
   outputEl.classList.add("loading");
   outputEl.classList.remove("error");
-  let url = "/api/?" + new URLSearchParams(data).toString();
+  let url = "./api/?" + new URLSearchParams(data).toString();
   xhr.open("get", url);
   xhr.onload = function () {
     if (xhr.status == 200) {

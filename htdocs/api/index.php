@@ -1,4 +1,7 @@
 <?php
+
+
+
 header("Access-Control-Allow-Origin: *");
 use ICal\Event;
 use ICal\ICal;
@@ -39,7 +42,7 @@ $maxItems = isset($_REQUEST["maxitems"]) ? intval($_REQUEST["maxitems"]) : 10;
 $completeCacheFile =
     CACHE_DIR .
     "/complete_" .
-    md5(json_encode([$url, $start, $end, $maxItems]));
+    md5(json_encode([$url, $start, $end, $maxItems,filemtime(__FILE__)]));
 
 $start = strtotime($start);
 $end = strtotime($end);
@@ -77,6 +80,61 @@ header("X-Debug-end: $end (" . date("Y-m-d", $end) . ")");
 header("X-Debug-max-items: $maxItems");
 
 require_once __DIR__ . "/../vendor/autoload.php";
+
+/**
+ * Converts an ics-parser date array (e.g. $event->dtstart_array) into a
+ * Unix timestamp that always represents an absolute point in time in UTC.
+ *
+ * The date array layout produced by the parser is:
+ *   [0] => array of parameters, may contain 'TZID' (e.g. 'Europe/Berlin')
+ *   [1] => the raw iCal date/time value (e.g. '20240115T140000' or '...Z')
+ *
+ * The wall-clock value in [1] is interpreted in the timezone given by
+ * [0]['TZID']. A trailing 'Z' means the value is already UTC. When no
+ * timezone information is present the value is treated as UTC.
+ *
+ * @param  mixed $dateArray
+ * @return int|null Unix timestamp (UTC) or null when it cannot be parsed
+ */
+function toUtcTimestamp($dateArray)
+{
+    if (!is_array($dateArray) || !isset($dateArray[1])) {
+        return null;
+    }
+
+    $value = (string) $dateArray[1];
+
+    // A trailing 'Z' denotes UTC; otherwise honour the event's TZID.
+    if (substr($value, -1) === "Z") {
+        $tzid = "UTC";
+    } elseif (isset($dateArray[0]["TZID"]) && $dateArray[0]["TZID"] !== "") {
+        $tzid = (string) $dateArray[0]["TZID"];
+    } else {
+        $tzid = "UTC";
+    }
+
+    try {
+        $timeZone = new DateTimeZone($tzid);
+    } catch (\Exception $e) {
+        $timeZone = new DateTimeZone("UTC");
+    }
+
+    $clean = rtrim($value, "Z");
+
+    // Interpret the wall-clock value in its timezone, then read the
+    // absolute (UTC) Unix timestamp via getTimestamp().
+    $dt = DateTime::createFromFormat("Ymd\\THis", $clean, $timeZone);
+    if ($dt === false) {
+        // Date-only value (e.g. all-day events): 'YYYYMMDD'.
+        $dt = DateTime::createFromFormat("!Ymd", $clean, $timeZone);
+    }
+
+    if ($dt === false) {
+        return null;
+    }
+
+    return $dt->getTimestamp();
+}
 
 if (!is_dir(CACHE_DIR)) {
     mkdir(CACHE_DIR, 0777, true);
@@ -167,15 +225,15 @@ try {
         @$r["summary"] = $event->summary;
         @$r["description"] = $event->description;
         @$r["location"] = $event->location;
-        @$r["start"] = $event->dtstart_array[2];
-        @$r["end"] = $event->dtend_array[2];
+        @$r["start"] = toUtcTimestamp($event->dtstart_array);
+        @$r["end"] = toUtcTimestamp($event->dtend_array);
         @$r["duration"] = $event->duration;
         @$r["url"] = $event->url;
         @$r["status"] = $event->status;
         return $r;
     }, $events);
     usort($events, function ($a, $b) {
-        return $a["start"] - $b["start"];
+        return ($a["start"] ?? 0) - ($b["start"] ?? 0);
     });
 } catch (\Exception $e) {
     header("HTTP/1.1 500 Internal Server Error");
