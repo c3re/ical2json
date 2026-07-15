@@ -1,5 +1,8 @@
 {
   "require": {
     "johngrogg/ics-parser": "^3.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11"
   }
 }

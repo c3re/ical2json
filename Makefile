@@ -1,7 +1,11 @@
-.PHONY: install prettier
+.PHONY: install prettier test
 
 prettier:
 	prettier -w .
+
+test: htdocs/vendor
+	cd htdocs ; composer install
+	php htdocs/vendor/bin/phpunit
 
 
 install: htdocs/vendor
