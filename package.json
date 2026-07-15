@@ -1,0 +1,26 @@
+{
+  "name": "ical2json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c3re/ical2json.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c3re/ical2json/issues"
+  },
+  "homepage": "https://github.com/c3re/ical2json#readme",
+  "dependencies": {
+    "@prettier/plugin-php": "^0.25.0",
+    "prettier": "^3.9.5"
+  }
+}

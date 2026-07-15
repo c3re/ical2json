@@ -1,3 +1,4 @@
 htdocs/cache/*
 htdocs/vendor/*
 .phpunit.cache/
+node_modules/

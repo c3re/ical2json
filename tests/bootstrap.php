@@ -8,8 +8,6 @@
  * under test.
  */
 
-require_once __DIR__ . "/../htdocs/vendor/autoload.php";
-require_once __DIR__ . "/../htdocs/api/lib.php";
-require_once __DIR__ . "/Support/HttpTestServer.php";
-
-
+require_once __DIR__ . '/../htdocs/vendor/autoload.php';
+require_once __DIR__ . '/../htdocs/api/lib.php';
+require_once __DIR__ . '/Support/HttpTestServer.php';

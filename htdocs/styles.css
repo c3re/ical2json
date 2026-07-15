@@ -1,56 +1,56 @@
 label {
-  display: block;
+    display: block;
 }
 label > input {
-  margin: 1em;
-  height: 3em;
-  width: 50em;
+    margin: 1em;
+    height: 3em;
+    width: 50em;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
-  color: #333;
-  background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    color: #333;
+    background: #fff;
 }
 
 #preview {
-  font-family: monospace;
-  white-space: pre;
-  border: 0.3em inset #4c4;
-  min-height: 3em;
+    font-family: monospace;
+    white-space: pre;
+    border: 0.3em inset #4c4;
+    min-height: 3em;
 }
 #preview.error {
-  border-color: #c44;
+    border-color: #c44;
 }
 #preview.loading {
-  border-color: #cc4;
+    border-color: #cc4;
 }
 textarea {
-  display: block;
-  margin: 1em;
-  width: calc(100% - 2em);
+    display: block;
+    margin: 1em;
+    width: calc(100% - 2em);
 }
 
 .grow-wrap {
-  display: grid;
+    display: grid;
 }
 .grow-wrap::after {
-  content: attr(data-replicated-value) " ";
+    content: attr(data-replicated-value) ' ';
 
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 
-  visibility: hidden;
+    visibility: hidden;
 }
 .grow-wrap > textarea {
-  resize: none;
+    resize: none;
 
-  overflow: hidden;
+    overflow: hidden;
 }
 .grow-wrap > textarea,
 .grow-wrap::after {
-  border: 1px solid black;
-  padding: 0.5rem;
-  font: inherit;
+    border: 1px solid black;
+    padding: 0.5rem;
+    font: inherit;
 
-  grid-area: 1 / 1 / 2 / 2;
+    grid-area: 1 / 1 / 2 / 2;
 }
